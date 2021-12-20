@@ -32,7 +32,6 @@ namespace MarsQA_1
 
         
         [Test, Order(2)]
-
         [Given(@"I click AddNew butn in the language field")]
         public void GivenIClickAddNewButnInTheLanguageField()
         {
@@ -88,6 +87,70 @@ namespace MarsQA_1
         }
 
         [Test, Order(7)]
+        [Given(@"I click AddNew butn to add existing language")]
+        public void GivenIClickAddNewButnToAddExistingLanguage()
+        {
+            Thread.Sleep(10000);
+            WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            IWebElement AddnewButn = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("(//div[text()='Add New'])[1]")));
+            AddnewButn.Click();
+        }
+
+        [Test, Order(8)]
+        [Given(@"I enter existing language")]
+        public void GivenIEnterExistingLanguage()
+        {
+            
+            IWebElement AddlanguageTextbox = driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
+            ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "language");
+            AddlanguageTextbox.SendKeys(ExcelLibHelper.ReadData(3, "language"));
+        }
+
+
+        [Test, Order(9)]
+        [Given(@"I select level Basic from language level dropdown")]
+        public void GivenISelectLevelBasicFromLanguageLevelDropdown()
+        {
+            IWebElement SelectlanguageLevel = driver.FindElement(By.XPath("(//SELECT[@class='ui dropdown'])"));
+            SelectlanguageLevel.Click();
+
+            var selectElement = new SelectElement(SelectlanguageLevel);
+            selectElement.SelectByValue("Basic");
+        }
+
+        
+
+        [Test, Order(10)]
+        [Then(@"I should see French already exist")]
+        public void ThenIShouldSeeFrenchAlreadyExist()
+        {
+
+            IWebElement addButn = driver.FindElement(By.XPath("(//INPUT[@type='button'])"));
+            addButn.Click();
+
+            Thread.Sleep(2000);
+
+            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("./MarsQA-1/TestReports/Screenshots/Screenshot-Alreadyexist.png", ScreenshotImageFormat.Png);
+        }
+
+
+        
+
+        
+
+
+        [Test, Order(11)]
+        [Given(@"I click AddNew butn")]
+        public void GivenIClickAddNewButn()
+        {
+            
+            WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 30));
+            IWebElement AddnewButn = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("(//div[text()='Add New'])[1]")));
+            AddnewButn.Click();
+        }
+
+
+        [Test, Order(12)]
         [Given(@"I click AddNew butn to add second language in the language field")]
         public void GivenIClickAddNewButnToAddSecondLanguageInTheLanguageField()
         {
@@ -97,34 +160,34 @@ namespace MarsQA_1
             AddnewButn.Click();
         }
 
-        [Test, Order(8)]
+        [Test, Order(13)]
         [Given(@"I enter second language in the language textbox")]
         public void GivenIEnterSecondLanguageInTheLanguageTextbox()
         {
             IWebElement AddlanguageTextbox = driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
             ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "language");
-            AddlanguageTextbox.SendKeys(ExcelLibHelper.ReadData(3, "language"));
+            AddlanguageTextbox.SendKeys(ExcelLibHelper.ReadData(4, "language"));
         }
 
-        [Test, Order(9)]
+        [Test, Order(14)]
         [Then(@"I should see Please enter language and level")]
         public void ThenIShouldSeePleaseEnterLanguageAndLevel()
         {
             IWebElement addButn = driver.FindElement(By.XPath("(//INPUT[@type='button'])"));
             addButn.Click();
+            Thread.Sleep(1000);
 
             ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile("./MarsQA-1/TestReports/Screenshots/Screenshot-English.png", ScreenshotImageFormat.Png);
 
 
         }
 
-        [Test, Order(10)]
+
+      
         public new void TearDown()
         {
 
-            // Screenshot
-            string img = SaveScreenShotClass.SaveScreenshot(Driver.driver, "Report");
-            test.Log(LogStatus.Info, "Snapshot below: " + test.AddScreenCapture(img));
+           
             //Close the browser
             Close();
 
