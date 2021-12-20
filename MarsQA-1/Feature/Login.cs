@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using TechTalk.SpecFlow;
 
-namespace MarsQA_1.Feature
+namespace MarsProject.StepDefinitions
 {
     [Binding]
-    class Login
+    public class LoginStepDefinitions
     {
         [Given(@"I login to the website")]
         public void GivenILoginToTheWebsite()
         {
-            ScenarioContext.Current.Pending();
+            throw new PendingStepException();
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MarsQA_1.Helpers;
 using MarsQA_1.Pages;
+using NUnit.Framework;
 using RelevantCodes.ExtentReports;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace MarsQA_1.Utils
     {
 
         [BeforeScenario]
+        
         public void Setup()
         {
             //launch the browser
@@ -26,6 +28,7 @@ namespace MarsQA_1.Utils
         }
 
         [AfterScenario]
+        
         public void TearDown()
         {
 
