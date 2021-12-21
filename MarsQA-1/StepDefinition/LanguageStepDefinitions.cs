@@ -100,7 +100,7 @@ namespace MarsQA_1
         [Given(@"I enter existing language")]
         public void GivenIEnterExistingLanguage()
         {
-            
+            Thread.Sleep(2000);
             IWebElement AddlanguageTextbox = driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
             ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "language");
             AddlanguageTextbox.SendKeys(ExcelLibHelper.ReadData(3, "language"));
@@ -164,6 +164,7 @@ namespace MarsQA_1
         [Given(@"I enter second language in the language textbox")]
         public void GivenIEnterSecondLanguageInTheLanguageTextbox()
         {
+            Thread.Sleep(2000);
             IWebElement AddlanguageTextbox = driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
             ExcelLibHelper.PopulateInCollection(@"MarsQA-1\SpecflowTests\Data\Data.xlsx", "language");
             AddlanguageTextbox.SendKeys(ExcelLibHelper.ReadData(4, "language"));
