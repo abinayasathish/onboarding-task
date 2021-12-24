@@ -157,7 +157,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StepDefinition\SkillStepDefinitions.cs" />
+    <Compile Include="SpecflowPages\Pages\Skill.cs" />
+    <Compile Include="StepDefinition\CertificationStepDefinitions.cs" />
     <Compile Include="Feature\Login.cs" />
+    <Compile Include="SpecflowPages\Pages\Certification.cs" />
     <Compile Include="SpecflowPages\Pages\Language.cs" />
     <Compile Include="StepDefinition\LanguageStepDefinitions.cs" />
     <Compile Include="SpecflowPages\Helpers\CommonMethods.cs" />
@@ -170,9 +174,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Feature\Certification.feature" />
     <None Include="Feature\Language.feature" />
     <None Include="Feature\Login.feature" />
     <None Include="Feature\Profile1.feature" />
+    <None Include="Feature\Skill.feature" />
     <None Include="SpecflowTests\Data\Data.xlsx" />
     <None Include="packages.config" />
     <None Include="SpecflowTests\Data\Mars.xlsx" />
